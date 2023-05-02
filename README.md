@@ -1,1 +1,1 @@
-# csv_repo_s3_csv_to_dynamo
+# csv_repo_s3_csv_delete_dynamo

@@ -1,5 +1,5 @@
 {
-  "name": "csv_repo_s3_csv_to_dynamo",
+  "name": "csv_repo_s3_csv_delete_dynamo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
