@@ -1,17 +1,15 @@
 import * as dotenv from 'dotenv'
 dotenv.config();
-import type { S3Event, SQSHandler } from 'aws-lambda';
+import type { S3Handler } from 'aws-lambda';
 import { Logger } from './logger';
 import {
   deleteDynamoTable,
   waitForTableDeletion
 } from './helpers';
 
-export const handler: SQSHandler = async (event) => {
+export const handler: S3Handler = async (event) => {
   try {
-    const message = event.Records[0].body;
-    const s3Event: S3Event = JSON.parse(JSON.parse(message).Message);
-    const fileObject = s3Event.Records[0].s3.object;
+    const fileObject = event.Records[0].s3.object;
     const fileName = decodeURIComponent(fileObject.key.replace(/\+/g, " "));;
     const tableName = `salah_csv_repo_${fileName.replace(/[^a-zA-Z0-9_.-]/gm, "_")}`;
     const logger = new Logger(fileName);
